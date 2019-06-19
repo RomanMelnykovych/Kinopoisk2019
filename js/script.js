@@ -32,8 +32,9 @@ function requestApi(method, url) {
             let dateItem = item.first_air_date || item.release_date;
             let posterItem = item.poster_path || item.backdrop_path;
             let descriptionItem = item.overview;
+            let ratingItem = item.vote_average;
 
-            inner += `<div class="card bg-light mb-3" >
+            inner += `<div class="card bg-light mb-3 w-100" >
                             <div class="row no-gutters">
                                 <div class="col-md-4">
                                     <img src="${getImg}${posterItem}" class="card-img" alt="poster">
@@ -41,21 +42,16 @@ function requestApi(method, url) {
                                 <div class="col-md-8">
                                     <div class="card-body">
                                         <h5 class="card-title">${nameItem}</h5>
-                                        <p class="card-text"><small>Дата виходу: ${dateItem}</small></p>
-                                        
+                                        <p class="card-text">Рейтинг <span class="badge badge-pill badge-info">${ratingItem}</span></p>
+                                         <p class="card-text"><small>Дата виходу: ${dateItem}</small></p>
                                         <p class="card-text">${descriptionItem}</p>
-                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
                                      </div>
                                  </div>
                             </div>
                        </div>`
-
-
-
         });
 
         movie.innerHTML = inner;
-
 
     });
 
